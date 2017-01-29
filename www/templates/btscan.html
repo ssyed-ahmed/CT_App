@@ -1,0 +1,61 @@
+<ion-view title="carbonTRACK Bluetooth Scan Page" ng-controller="BTController as btCtrl">
+  <div class="bar bar-header bar-positive">
+    <div class="h1 title">carbonTRACK Bluetooth Device Scanner</div>
+  </div>
+
+  <ion-content class="has-header padding">
+    <div class="center">
+      Click on the button below to scan Bluetooth devices.
+    </div>
+    <div class="spacer">
+
+    </div>
+    <div class="center">
+      <button class="button icon-left ion-bluetooth button-positive" ng-click="btCtrl.scan()">
+        Scan Bluetooth Devices
+      </button>
+    </div>
+
+    <div ng-if="btCtrl.isScanning" style="text-align:center;">
+      <br><br>
+      Scanning Devices...
+      <br><br>
+      <ion-spinner class="spinner-assertive"></ion-spinner>
+      <br><br>
+    </div>
+    <div class="card" ng-if="btCtrl.scanComplete">
+      <div class="item item-divider">
+        Devices Found
+      </div>
+      <div class="item">
+        <ul class="list">
+            <!-- <ion-card ng-if="btCtrl.scanComplete">
+              <ion-card-header>
+                Devices Found
+              </ion-card-header>
+              <ion-list ng-repeat="device in btCtrl.devices | filter: {name: 'carbonTRACK'}">
+                <button ion-item>
+                  <ion-icon name="power" item-left></ion-icon>
+                  {{device.name}}
+                </button>
+              </ion-list>
+            </ion-card> -->
+            <li class="item item-button-right" ng-repeat="device in btCtrl.devices | filter: {name: 'carbonTRACK'}">
+            <i class="icon icon-left ion-bluetooth"></i>
+            {{device.name}}
+            <button class="button icon-left ion-power button-positive" ng-click="btCtrl.connectDevice(device)">
+            Connect
+            </button>
+            </li>
+            <!-- <ion-list ng-repeat="device in btCtrl.devices | filter: {name: 'carbonTRACK'}">
+              <ion-item>
+                <ion-icon name="leaf" item-left></ion-icon>
+                  Herbology
+                <ion-icon name="rose" item-right></ion-icon>
+              </ion-item>
+            </ion-list> -->
+        </ul>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

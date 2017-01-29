@@ -1,0 +1,24 @@
+<ion-view title="Ionic BLE Attendance" ng-controller="ConfigController as configCtrl">
+  <div class="bar bar-header bar-positive">
+    <div class="h1 title">carbonTRACK Configuration</div>
+  </div>
+
+  <ion-content class="has-header padding">
+    <div class="center">
+      Wifi connection established with network <span class="BTDevice">{{configCtrl.networkSSID}}</span>. Please click the button below to send Wifi details to carbonTRACK.
+    </div>
+    <div class="spacer"></div>
+
+    <!-- <div class="list">
+     <label class="item item-input item-stacked-label">
+       <span class="input-label">Enter the String below</span>
+       <input type="text" ng-model="configCtrl.string" placeholder="">
+     </label>
+   </div> -->
+   <div>
+     <button class="button icon-right ion-arrow-right-c button-positive" ng-click="configCtrl.sendString()">
+       Send
+     </button>
+   </div>
+  </ion-content>
+</ion-view>

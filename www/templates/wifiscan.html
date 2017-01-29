@@ -1,0 +1,42 @@
+<ion-view title="Ionic BLE Attendance" ng-controller="WifiController as wifiCtrl">
+  <div class="bar bar-header bar-positive">
+    <div class="h1 title">carbonTRACK Wifi Network Scanner</div>
+  </div>
+
+  <ion-content class="has-header padding">
+    <div class="center">
+      Bluetooth connection established with device <span class="BTDevice">{{wifiCtrl.pairedBTDevice}}</span>. Click on the button below to scan Wifi networks.
+    </div>
+    <div class="spacer"></div>
+    <div class="center">
+      <button class="button icon-left ion-wifi button-positive" ng-click="wifiCtrl.scan()">
+        Scan Wifi Networks
+      </button>
+    </div>
+
+    <div ng-if="wifiCtrl.isScanning" style="text-align:center;">
+      <br><br>
+      Scanning Networks...
+      <br><br>
+      <ion-spinner class="spinner-assertive"></ion-spinner>
+      <br><br>
+    </div>
+    <!-- <div class="card" ng-if="wifiCtrl.scanComplete"> -->
+    <div class="card" ng-if="wifiCtrl.scanComplete">
+      <div class="item item-divider">
+        Networks Found
+      </div>
+      <div class="item">
+        <ul class="list">
+            <li class="item item-button-right" ng-repeat="network in wifiCtrl.networks">
+            <i class="icon icon-left ion-wifi"></i>
+            {{network}}
+            <button class="button icon-left ion-power button-positive" ng-click="wifiCtrl.connectWifi(network)">
+            Connect
+            </button>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
